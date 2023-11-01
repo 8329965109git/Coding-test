@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Employee Details</title>
+    <link href="/static/css/mycustom.css" rel="stylesheet" type="text/css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+{% block baseblock %}
+
+
+<div class="headingBlock">
+    <h4> Search an Employee</h4>
+</div>
+
+
+<div class="container">
+    <form action="/filter_emp" id="empsform" method="post">
+        {% csrf_token %}
+        <label for="name">Employee First/Last Name</label><br>
+        <input type="text" id="name" name="name" value={{ name }} ><br>
+        <label for="dept">Department</label><br>
+        <input id="dept" name="dept" type="text" value="{{ dept }}"><br>
+        <label for="role">Role</label><br>
+        <input id="role" name="role" type="text" value="{{ role }}"><br><br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <br>
+    </form>
+</div>
+
+{% endblock %}
+</body>
+</html>
